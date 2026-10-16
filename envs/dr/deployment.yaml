@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-dr
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: web-dr } }
+  template:
+    metadata: { labels: { app: web-dr } }
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27
