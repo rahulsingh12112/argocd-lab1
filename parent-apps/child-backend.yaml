@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: child-backend
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rahulsingh12112/argocd-lab1.git
+    targetRevision: HEAD
+    path: envs/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: child-backend
+  syncPolicy:
+    automated: {prune: true, selfHeal: true}
+    syncOptions: [CreateNamespace=true]
