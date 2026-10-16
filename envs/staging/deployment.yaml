@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-staging
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: web-staging } }
+  template:
+    metadata: { labels: { app: web-staging } }
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27
